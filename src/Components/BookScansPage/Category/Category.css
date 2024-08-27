@@ -1,0 +1,266 @@
+
+
+.form-scans-col {
+    background-color: white;
+    box-shadow: 0 15px 40px 10px rgb(154, 170, 207, 0.25) !important;
+    border-top-right-radius: 25px !important;
+    border-top-left-radius: 25px !important;
+    height:  735px!important; /* Set the height to viewport height */
+    overflow-y: auto !important;
+
+  }
+.form-scans form div .form-label{
+    color:#46A4D9;
+}
+.form-scans form div  .form-control{
+    border: 1px solid gray !important;
+    box-shadow: none !important;
+}
+.form-check-input{
+    border: 1px solid #46A4D9;
+    box-shadow: none !important;
+    width: 20px !important;
+    height: 20px !important;
+}
+.scan-card {
+    border: 0px !important;
+    box-shadow: 0 4px 4px 4px rgba(0, 0, 0, 0.096) !important;
+    border-right: 12px solid #FF851B !important;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    padding: 0px 5px;
+    border-bottom-left-radius: 0pX !important;
+    border-top-left-radius: 0px !important;
+  }
+  .scan-card-body>.subtitle{
+    margin-top: -8px;
+  }
+
+  .scan-card-img-div {
+    background-color: #E9FAFF !important;
+    display: flex;
+    height: 50px;
+    width: 50px;
+  }
+
+.scan-div1st{
+    box-shadow: 0 4px 8px  rgba(0, 0, 0, 0.1) ;
+    width: 209px ;
+    height: 150px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    padding: 8px;
+}
+.scan-div1st>img{
+    width: 50px;
+}
+.filed-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #46A4D9 !important; 
+    height:80px !important;
+    padding: 5px 10px !important;
+}
+.button-white-bg{
+    background-color: white!important;
+    color: #46A4D9 !important;
+    font-weight: 700 !important;
+    border: none !important;
+    border-radius: 20px !important;
+    padding: 10px !important;
+    width: 250px !important;
+}
+.service-section {
+    padding: 0;
+    margin-top: 0px;
+    text-align: center;
+}
+.scan-price{
+  font-size: 19px;
+  font-weight: bold;
+  margin-bottom: 0px;
+  color: #FF851B;
+}
+
+@media only screen and (max-width: 1666px) {
+    .service-section h3 {
+        text-align: center;
+        border-radius: 50px;
+        background: #fff;
+        display: inline-block;
+        font-size: 25px;
+        font-weight: 500;
+        color: #00A0A8;
+        margin: auto;
+        padding: 2px 2%;
+        border: 1px solid #e5580c;
+        z-index: 1;
+    }
+}
+.cost_content {
+    margin: 10px auto;
+    display: block;
+ background-color: #fff;
+ box-shadow:0px 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f4f2f2ac;
+    border-radius: 5px;
+
+  }
+  .cost_content .costList ul li {
+    display: inline-block;
+    float: left;
+    vertical-align: top;
+    margin-right: 0;
+    margin-left: 1%;
+    margin-bottom: 1%;
+  }
+
+  .cost_content h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #5e5e5e;
+    border-bottom: 1px solid #eaeaea;
+    padding: 10px 25px;
+    border-radius: 4px 0 0px 4px;
+    margin: 0px;
+    width: 100%;
+    text-align: left;
+    float: left;
+  }
+  .cost_content .costList ul li a {
+    border: 1px solid #eaeaea;
+    border-radius: 30px;
+    font-weight: 400;
+    padding: 6px 14px;
+    text-align: center;
+    color: #5e5e5e;
+    font-size: 13px;
+    display: block;
+    text-decoration: none;
+  }
+  .cost_content .costList ul li a:hover {
+    background-color: #46A4D9;
+    color: #eaeaea;
+  }
+
+.scan-div2 {
+    width: 300px ;
+    height: 25px !important;
+    text-align: center !important;
+    padding: 10px 0px !important;
+    border-radius: 15px !important;
+    font-weight: 500 !important;
+}
+.scan-div2:hover{
+    background-color: #46A4D9 !important;
+    color: white !important;
+
+}
+.sectionContainerHealth{
+     background-color:  #ecededb2  
+}
+.otherlistitems{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.otherlistitems>ul>li{
+  display: flex;
+  list-style: none;
+  align-items: center;
+  text-align: center;
+  margin: 0;
+  background: #fff;
+  border: 1px solid #f3f3f3;
+  box-shadow: 0 5px 20px rgba(178, 178, 178, 0.2);
+  border-radius: 7px;
+  padding: 10px 12px;
+  text-align: center;
+  color: #173731;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  animation: bounce 2s infinite; /* Adding animation */
+  transition: transform 0.3s ease-in-out; 
+}
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust the gap as needed */
+  list-style-type: none;
+  padding: 0;
+  justify-content: center; /* Center the items horizontally */
+}
+
+.flex-item {
+  flex: 1 1 calc(35% - 10px); /* 4 items per row with gap accounted for */
+  min-width: 250px; /* Minimum width for each item */
+  box-sizing: border-box;
+  background: #f8f9fa; /* Optional: Add background color for each item */
+  border: 1px solid #dee2e6; /* Optional: Add border for each item */
+  padding: 10px; /* Optional: Adjust padding */
+  text-align: center; /* Center text inside each item */
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@media screen  and (max-width: 768px){
+    .scan-div1st img{
+        width: 60px !important;
+        height: 60px !important;
+
+    }
+    .scan-div1st{
+        width:200px;
+        height: 150px;
+    }
+    .scan-card-body>.subtitle{
+      margin-top: -0px;
+    }
+  
+    .scan-card-img-div {
+     display: none;
+    }
+    
+    .form-scans-col {
+      background-color: white;
+      box-shadow: 0 15px 40px 10px rgb(154, 170, 207, 0.25) !important;
+      border-top-right-radius: 25px !important;
+      border-top-left-radius: 25px !important;
+      height:  675px!important; /* Set the height to viewport height */
+      overflow-y: auto !important;
+      margin-top: 0px;
+
+      
+    }
+    .scan-card{
+     height: 70px;
+    }
+    .scan-price{
+     display:none;
+    }
+    .scan-card-footer{
+      padding-left: -0px;
+      margin-left: 0px;
+    }
+    
+}
+
+

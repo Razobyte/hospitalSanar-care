@@ -1,0 +1,124 @@
+[
+  {
+    "megaMenus": [
+      {
+        "name": "Book Scans",
+        "url": "/bookscans",
+        "options": [
+          {
+            "label": "Digital X-Ray",
+            "url": "/bookscans/digital-xray/gurugram",
+            "subOptions": [
+              { "label": "Abdominal X-Ray", "url": "/bookscans/digital-x-ray/abdominal-x-ray/gurugram" },
+              { "label": "Pelvis X-Ray", "url": "/bookscans/digital-x-ray/pelvis-x-ray/gurugram" },
+              { "label": "Cervical X-Ray", "url": "/bookscans/digital-x-ray/cervical-x-ray/gurugram" },
+              { "label": "Chest X-Ray", "url": "/bookscans/digital-x-ray/chest-x-ray/gurugram" },
+              { "label": "Knee X-Ray", "url": "/bookscans/digital-x-ray/knee-x-ray/gurugram" }
+            ]
+          },
+          {
+            "label": "Ultrasound",
+            "url": "bookscans/ultra-sound/gurugram",
+            "subOptions": [
+              { "label": "Abdominal Ultrasound", "url": "/bookscans/ultrasound/abdominal-ultrasound/gurugram" },
+              { "label": "Breast Ultrasound", "url": "/bookscans/ultrasound/breast-ultrasound/gurugram" },
+              { "label": "Kidney Ultrasound", "url": "/bookscans/ultrasound/kidney-ultrasound/gurugram" },
+              { "label": "Level 2 Ultrasound", "url": "/bookscans/ultrasound/level2-ultrasound/gurugram" },
+              { "label": "Pelvis Ultrasound", "url": "/bookscans/ultrasound/pelvis-ultrasound/gurugram" },
+              { "label": "Pregnancy Ultrasound", "url": "/bookscans/ultrasound/pregnancy-ultrasound/gurugram" },
+              { "label": "Scrotal Ultrasound", "url": "/bookscans/ultrasound/scrotal-ultrasound/gurugram" },
+              { "label": "Doppler Scan", "url": "/bookscans/ultrasound/doppler-scan/gurugram" },
+              { "label": "TVS Ultrasound", "url": "/bookscans/ultrasound/tvs-ultrasound/gurugram" }
+            ]
+          },
+          {
+            "label": "CT Scan",
+            "url": "/bookscans/ct-scan/gurugram",
+            "subOptions": [
+              { "label": "NT Scan", "url": "/bookscans/ctscan/nt-scan/gurugram" },
+              { "label": "TIFFA Scan", "url": "/bookscans/ctscan/tiffa-scan/gurugram" },
+              { "label": "Heart CT Scan", "url": "/bookscans/ctscans/heart-ct-scan/gurugram" },
+              { "label": "Sinus CT Scan", "url": "/bookscans/ctscans/sinus-ct-scan/gurugram" },
+              { "label": "Abdominal CT Scan", "url": "/bookscans/ctscans/abdominal-ct-scan/gurugram" },
+              { "label": "Brain CT Scan", "url": "/bookscans/ctscans/brain-ct-scan/gurugram" },
+              { "label": "Chest CT Scan", "url": "/bookscans/ctscans/chest-ct-scan/gurugram" },
+              { "label": "CT KUB Scan", "url": "/bookscans/ctscans/ct-kub-scan/gurugram" },
+              { "label": "CT PNS Scan", "url": "/bookscans/ctscans/ctpns-scan/gurugram" },
+              { "label": "CBCT Scan", "url": "/bookscans/ctscans/cbct-scan/gurugram" },
+              { "label": "CECT Scan", "url": "/bookscans/ctscans/cect-scan/gurugram" },
+              { "label": "HRCT Scan", "url": "/bookscans/ctscans/hrct-scan/gurugram" }
+            ]
+          },
+          {
+            "label": "MRI Scan",
+            "url": "/bookscans/mri-scan/gurugram",
+            "subOptions": [
+              { "label": "Brain MRI Scan", "url": "/bookscans/mri-scan/brain-mri-scans/gurgram" },
+              { "label": "MRI Lumbar Spine Scan", "url": "/bookscans/mri-scan/lumbar-spine-scans/gurugram" },
+              { "label": "Pelvis MRI Scan", "url": "/bookscans/mri-scan/pelvis-mri-scan/gurugram" },
+              { "label": "MRI Knee Scan", "url": "/bookscans/mri-scan/mri-knee/gurugram" },
+              { "label": "Ankle MRI Scan", "url": "/bookscans/mri-scan/ankle-mri/gurugram" },
+              { "label": "Shoulder MRI Scan", "url": "/bookscans/mri-scan/shoulder-mri/gurugram" },
+              { "label": "3T MRI Scan", "url": "/bookscans/mri-scan/mri-3t/gurugram" },
+              { "label": "MRCP Scan", "url": "/bookscans/mri-scan/mrcp-scan/gurugram" },
+              { "label": "MRI Angiogram", "url": "/bookscans/mri-scan/angiogram-scan/gurugram" },
+              { "label": "MRI Cervical Spine", "url": "/bookscans/mri-scan/cervical-spin-scan/gurugram" },
+              { "label": "MRI Dorsal Spine", "url": "/bookscans/mri-scan/dorsal-spine-mri/gurugram" }
+            ]
+          },
+          {
+            "label": "ECG Test",
+            "url": "/bookscans/ecg-test/gurugram",
+            "subOptions": [
+              { "label": "ECG TEST", "url": "/bookscans/ecg-test/ecg-tests/gurugram" }
+            ]
+          },
+          {
+            "label": "Echo Test",
+            "url": "/bookscans/echo-test/gurugram",
+            "subOptions": [
+              { "label": "ECHO TEST", "url": "/bookscans/echo-test/echo-tests/gurugram" }
+            ]
+          },
+          {
+            "label": "TMT Test",
+            "url": "/bookscans/tmt-test/gurugram",
+            "subOptions": [
+              { "label": "TMT TEST", "url": "/bookscans/tmt-test/tmt-tests/gurugram" }
+            ]
+          },
+          {
+            "label": "PET Scan",
+            "url": "/bookscans/pet-scan/gurugram",
+            "subOptions": [
+              { "label": "heart PET TEST", "url": "/bookscans/pet-scan/heart-pet-test/gurugram" },
+              { "label": "PSMA PET TEST", "url": "/bookscans/pet-scan/psma-pet-test/gurugram" },
+              { "label": "Dotanoc PET TEST", "url": "/bookscans/pet-scan/dotanoc-pet-test/gurugram" }
+            ]
+          },
+          {
+            "label": "EEG Test",
+            "url": "/bookscans/eeg-test/gurugram",
+            "subOptions": [
+              { "label": "EEG test", "url": "/bookscans/eeg-test/eeg-tests/gurugram" }
+            ]
+          },
+          {
+            "label": "DEXA Scan",
+            "url": "/bookscans/dexa-scan/gurugram",
+            "subOptions": [
+              { "label": "Dexa TEST", "url": "/bookscans/dexa-scan/dexa-scans/gurugram" }
+            ]
+          },
+          {
+            "label": "PFT Tests",
+            "url": "/bookscans/pft-tests/gurugram",
+            "subOptions": [
+              { "label": "PFT test", "url": "/bookscans/pft-tests/pft-test/gurugram" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

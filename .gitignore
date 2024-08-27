@@ -1,0 +1,4 @@
+node_modules/
+* text=auto
+[*]
+end_of_line = lf

@@ -1,0 +1,123 @@
+
+  
+.main-form-page {
+    width: 500px !important;
+    height: 500px !important;
+    background-color: white;
+    box-shadow: 0 4px 8px 0px rgb(0, 0, 0, 0.1) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+   
+}
+.img-form {
+    position: absolute !important;
+    left: 30px !important; /* Adjust from left to right */
+}
+.form-control-main-page {
+    width: 80% !important;
+    margin: auto;
+    border: none !important;
+    border-radius: 0px !important;
+    border-bottom: 1px solid #FF851B !important;
+    outline: none !important;
+    box-shadow: none !important;
+    color:#635A5A !important
+}
+.formbutton {
+    background-color: #FF631A !important;
+    color: white !important;
+    font-weight: 500 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 0px !important;
+    border-radius: 6px !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    font-size: 20.5px !important;
+    width: 162px !important;
+   
+}
+
+.formbutton:hover {
+    color: #FF851B !important;
+    border: 1px solid #FF851B !important;
+    background-color: transparent !important;
+}
+
+@media screen and (max-width: 768px) {
+    .main-form-page {
+        width: 330px !important;
+        height: 320px !important;
+        background-color: white;
+        box-shadow: 0 8px 5px 0px rgb(0, 0, 0, 25%) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        top: 15px;
+        position: relative !important;
+        left: 10px !important; /* Adjust this value to shift it further right */
+        transform: translateY(-0%); /* Center vertically */
+        border-radius: 8px !important;
+    }
+    .img-form {
+        position: absolute !important;
+        left: 20px !important; /* Adjust from left to right */
+    }   
+}
+/* iPhone 6/7/8 Plus */
+@media screen and (max-width: 414px) and (min-height: 915px) {
+    .main-form-page {
+        .main-form-page {
+            width: 330px !important;
+            height: 584px !important;
+            background-color: white;
+            box-shadow: 0 8px 5px 0px rgb(0, 0, 0, 25%) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            top: 15px;
+            position: relative !important;
+            left: 60px !important; /* Adjust this value to shift it further right */
+            transform: translateY(-0%); /* Center vertically */
+            border-radius: 8px !important;
+        }
+    }
+}
+
+/* iPads */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .main-form-page {
+        .main-form-page {
+            width: 330px !important;
+            height: 584px !important;
+            background-color: white;
+            box-shadow: 0 8px 5px 0px rgb(0, 0, 0, 25%) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            top: 15px;
+            position: relative !important;
+            left: 50px !important; /* Adjust this value to shift it further right */
+            transform: translateY(-0%); /* Center vertically */
+            border-radius: 8px !important;
+        }
+    }
+}
+/* Samsung Galaxy devices */
+@media screen and (max-width: 360px) {
+    .main-form-page {
+        .main-form-page {
+            width: 330px !important;
+            height: 584px !important;
+            background-color: white;
+            box-shadow: 0 8px 5px 0px rgb(0, 0, 0, 25%) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            top: 15px;
+            position: relative !important;
+            left: 50px !important; /* Adjust this value to shift it further right */
+            transform: translateY(-0%); /* Center vertically */
+            border-radius: 8px !important;
+        }
+    }
+}

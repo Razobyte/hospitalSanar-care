@@ -1,0 +1,85 @@
+*{
+  font-family: montserrat,sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  
+}
+body{
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+
+.hed1{
+  font-size: 40px;
+  color: #585454;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.hed3{
+  font-size: 22px;
+  font-weight: 600;
+  color: #4d4c4c;
+}
+
+.hed4{
+  font-size: 18px;
+  font-weight: 600;
+  color: #585454;
+}
+.para{
+  font-size:15px ;
+  font-weight:500 ;
+  color: rgba(94, 94, 94, 0.795) ;
+}
+.hed2{
+  font-size: 38px;
+  color: #585454;
+  font-weight: 700;
+}
+
+@media screen and  (max-width:768px) {
+  .hed1{
+    font-size:14px;
+    color: #585454;
+    font-weight: 650;
+  }
+  .hed2{
+    font-size: 13px;
+    color: #585454;
+    font-weight: 600;
+  }
+  .hed4{
+    font-size:10px;
+    font-weight:500;
+  }
+  .para{
+    font-size: 9px ;
+    font-weight:450 ;
+  }
+  .hed3{
+    font-size: 11px;
+    font-weight: 550;
+
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  *{
+    animation: none !important ;
+  }
+ 
+}
+@media (max-width: 575.98px) {
+  .custom-pe{
+    padding-right: 1rem; /* Equivalent to pe-5 */
+  }
+  .custom-pr{
+    padding-left: 1rem; /* Equivalent to pe-5 */
+  }
+}
+

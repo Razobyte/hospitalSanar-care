@@ -1,0 +1,204 @@
+
+
+.doctos-banner-text>h1{
+font-size: 65px;
+text-align: center;
+font-weight: 800;
+color: #FF631A;
+}
+.doctos-banner-text>p{
+    font-size: 55px;
+    text-align: center;
+    color: #353434;
+    font-weight: 600;
+}
+.doctos-banner-text>h2{
+    font-size: 65px;
+    text-align: center;
+    color: #156ea1;
+    font-weight: 800;
+}
+.form-control-search-page{
+    margin: auto;
+    border-radius: 8px !important;
+    outline: none !important;
+    box-shadow: none !important;
+    color:#635A5A !important;
+
+}
+.doctors-name ul li:nth-child(n-5){
+    list-style: none;
+    color:#635A5A ;
+    font-weight: 550;
+    font-size: 16px;
+    cursor: pointer ;
+    padding:2px;
+}
+.doctors-name ul li:active,
+.doctors-name ul li:focus,
+.doctors-name ul li:hover {
+    color: #156ea1 !important; /* For example */
+}
+.exp{
+  font-size: 15px;
+  color: #303030cc;
+}
+.des2{
+  font-size: 18px;
+  color: #303030cc;
+  font-weight: 400;
+}
+.des{
+  font-size: 15px;
+  color: #303030cc;
+  font-weight:500;
+}
+
+
+.doctors-card {
+  background: linear-gradient(to left, #a6deff, #C1E4F9) !important;
+  border: 0px !important;
+  border-radius: 0px !important;
+  padding: 0px !important;
+  width: 100%;
+  border-top-right-radius: 10px !important;
+  border-top-left-radius: 10px !important;
+}
+.accordion{
+  position: relative;
+  padding: 0px ;
+  border-radius: 0px !important;
+}
+.accordion-item{
+  background-color: rgba(134, 134, 134, 0.062) !important;
+  border: 0px !important; 
+  box-shadow: none !important;
+}
+.accordion-button{
+  background-color:#eeebeb0a !important ;
+  outline: none !important;
+  border: 1px solid rgb(239, 235, 235) !important;
+  text-align: center;
+  border-radius: 0px !important;
+}
+.accordion-button::after {
+  width: 18px !important;
+  height: 18px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.accordion-button:focus{
+  background-color: #b4b0b0ad !important;
+  box-shadow: none !important;
+}
+.card-image-container{
+  width: 200px !important;
+  height: 200px !important
+}
+.custom-modal-content {
+  background-color: white;
+  padding: 5px;
+  border-radius:5px;
+  position: relative;
+  margin: 0 auto;
+  background-color: transparent;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: #000;
+}
+
+.close-button:hover {
+  color: #666;
+}
+.consult-now-btn{
+  background-color: #24cc63 !important;
+  border: 0px !important;
+  box-shadow: 0px !important;
+  border-radius: 5px !important;
+  font-weight: 400;
+  font-size: 16px !important;
+  cursor: pointer;
+  width: 200px;
+
+}
+.button-container button:nth-child(2) {
+  background-color: #FF851B !important;
+  border: 0px !important;
+  font-size: 16px !important;
+  font-weight: 400;
+  box-shadow: 0px !important;
+  border-radius: 5px !important;
+  cursor: pointer;
+  width: 200px;
+  
+}
+.consult-now-btn:nth-child(1):hover{
+  background-color: #ffff !important;
+  border: 1px solid #FF851B  !important;
+  color:  #FF851B ;
+}
+.button-container button:nth-child(2):hover{
+  background-color: #ffff !important;
+  border: 1px solid #29A71A  !important;
+  color:  #29A71A ;
+}
+@media screen  and (max-width: 768px){
+  .button-container button:nth-child(2) {
+    background-color: #FF851B !important;
+    border: 0px !important;
+    font-size: 10px !important;
+    font-weight: 400;
+    box-shadow: 0px !important;
+    border-radius: 10px !important;
+    cursor: pointer;
+  }
+  .consult-now-btn{
+    background-color: #29A71A !important;
+    border: 0px !important;
+    font-size: 10px !important;
+    font-weight: 400;
+    box-shadow: 0px !important;
+    border-radius: 10px !important;
+    cursor: pointer;
+    padding: 0px;
+
+  }
+  .card-image-container{
+    width: 100px !important;
+    height: 100px !important
+    
+  }
+.exp{
+  font-size: 10px;
+  font-weight: 300;
+}
+.des2{
+  font-size: 8px;
+  color: #303030;
+  font-weight: 100;
+}
+.des{
+  font-size: 13px;
+  color: #303030;
+  font-weight: 200;
+}
+.des2{
+  font-size: 13px;
+  color: #303030;
+  font-weight: 300;
+}
+.card{
+     font-weight:normal;
+     font-size: 10px;
+}
+  
+}
+.card-width-container {
+  width: 100%;
+}
+
+
+
