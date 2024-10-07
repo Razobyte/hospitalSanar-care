@@ -11,6 +11,7 @@ export default function SectionFirst() {
     const [filteredDepartments, setFilteredDepartments] = useState([]);
     const [doctorSearch, setDoctorSearch] = useState('');
     const [departmentSearch, setDepartmentSearch] = useState('');
+    const [selectedDoctor, setSelectedDoctor] = useState(null);
     let api = import.meta.env.VITE_API_BASE_URL;
 
     const fetchData = async () => {
@@ -49,6 +50,7 @@ export default function SectionFirst() {
             doctor.name.toLowerCase().includes(doctorSearch.toLowerCase())
         );
         setFilteredDoctors(filtered);
+        setSelectedDoctor(filtered.length === 1 ? filtered[0] : null);
     }, [doctorSearch, doctorsData]);
 
     useEffect(() => {
@@ -64,7 +66,8 @@ export default function SectionFirst() {
             <Col xl={3} lg={4} md={4} className="px-0 py-lg-3 py-md-3 py-xl-3 d-flex flex-column gap-4">
                 {/* By Doctors Section */}
                 <Card className="shadow p-3 mb-4 rounded-3" style={{ backgroundColor: "#ffffff", border: 'none' }}>
-                    <h4 className='hed4 px-2 mb-3' style={{ color: "#333333", fontWeight: "bold", fontSize: "1.25rem" }}>Search by Doctors</h4>
+                    <h4 className='hed4 px-2 mb-3' style={{ color: "#333333", fontWeight: "bold", fontSize: "1.25rem" }}>
+                        Search by Doctors</h4>
                     <Form className="d-flex flex-column">
                         <div className="position-relative mb-4">
                             <Form.Control
@@ -117,9 +120,7 @@ export default function SectionFirst() {
 
             {/* Doctor Cards Section */}
             <Col xl={7} lg={7} md={7} className="d-flex flex-column align-items-start">
-                {filteredDoctors.map((doctor, index) => (
-                    <DoctorCard key={index} doctor={doctor} />
-                ))}
+                {selectedDoctor && <DoctorCard doctor={selectedDoctor} />}
             </Col>
         </Row>
     );

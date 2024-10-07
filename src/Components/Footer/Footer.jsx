@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Row } from "react-bootstrap";
-import logo from '../../../public/Image/sanar-care-logo.png';
+import logo from '../../../public/Image/sanar-care-logo.webp';
 import youTube from '../../../public/Image/youtube_1384060 1.png';
 import Fb from '../../../public/Image/Fbicon.png';
 import phone from '../../../public/Image/phoneIcon.png';
@@ -8,7 +8,7 @@ import mail from '../../../public/Image/mail.png';
 import instr from './../../../public/Image/instagram (1) 1.png';
 
 import './Footer.css';
-import FooterFormModel from "../FooterFormModel";
+import FooterFormModel from '../../FooterFormModel';
 
 export default function Footer() {
   return (

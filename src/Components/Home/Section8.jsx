@@ -5,8 +5,10 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Card, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Section8() {
+  const navigate=useNavigate()
   const [datadoctors, setData] = useState([]);
   let api = import.meta.env.VITE_API_BASE_URL
   
@@ -61,7 +63,7 @@ export default function Section8() {
           {datadoctors.map((doctor, index) => (
             <SwiperSlide key={index}>
               <div className="doctor-card-wrapper d-flex justify-content-center align-items-center">
-                <div className="doctor-card-container-main-page">
+                <div className="doctor-card-container-main-page" onClick={()=>navigate('./our-doctors')}>
                   <img src={doctor.image || 'default-image-url'} alt={doctor.name} className='img-fluid ' />
                   <Card className="doctor-card-main-page pb-4">
                     <Card.Title>

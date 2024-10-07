@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Row, Col, Form, Card } from 'react-bootstrap';
-import Section10 from '../Home/Section10';
-import Section11 from '../Home/Section11';
+import Section10 from '../home/Section10';
+import Section11 from '../home/Section11';
 
 export default function BlogDetail() {
     const { slug } = useParams();
@@ -120,17 +120,16 @@ export default function BlogDetail() {
                         </Form>
                         {filteredRecentPosts.map((post, index) => (
                             <div key={index} className='recent-post d-flex gap-3 mb-3 align-items-center'>
-                                <div>
+                                <div className='w-50'>
                                     {post.image && (
                                         <img 
                                             src={post.image} 
                                             alt={post.title} 
-                                            className="img-fluid rounded" 
-                                            style={{ width: '50px', height: '50px', objectFit: 'cover' }} 
+                                            className="img-fluid" 
                                         />
                                     )}
                                 </div>
-                                <p className='mb-0 hed4' style={{cursor:"pointer"}}>{post.title}</p>
+                                <p className='mb-0 para' style={{cursor:"pointer"}}>{post.title}</p>
                             </div>
                         ))}
                     </div>

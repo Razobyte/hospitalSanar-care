@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Row, Col, Button } from 'react-bootstrap';
-import './Dynamic.css'; // Make sure this path is correct
 
 export default function HealthPackageDetail() {
     const { slug } = useParams();
     const [packageDetail, setPackageDetail] = useState(null);
     const [status, setStatus] = useState('loading');
+    const api = import.meta.env.VITE_API_BASE_URL;
+
 
     useEffect(() => {
         const fetchPackageDetail = async () => {
@@ -17,7 +18,8 @@ export default function HealthPackageDetail() {
                 formData.append('view', 'health_package_detail');
                 formData.append('slug', slug);
 
-                const res = await axios.post('https://www.shopifysolutions.in/website/sanarcare/androidApi/index.php', formData, {
+                const res = await axios.post(api,
+                     formData, {
                     headers: { 'Content-Type': 'multipart/form-data' },
                 });
 
@@ -51,26 +53,26 @@ export default function HealthPackageDetail() {
     }
 
     return (
-        <Row className='d-flex justify-content-center'>
-            <Col md={6} className="dynamic-page">
+        <Row className='d-flex justify-content-center mt-5'>
+            <Col md={5} className="dynamic-page">
                 <div className="image-container">
                     <img src={packageDetail.image} alt={packageDetail.title} className="img-fluid" />
                 </div>
-                
+               <div className='mt-3 text-center'>
+               <h2 className='hed2'>Package Details</h2>
+               <div dangerouslySetInnerHTML={{ __html: packageDetail.description }}  className='para'/>
+               </div>
             </Col>
-            <Col md={6} className="content-container">
-                <h1>{packageDetail.title}</h1>
+            <Col md={5} className="content-container">
+                <h1 className='hed2'>{packageDetail.title}</h1>
                 <p>
-                    Price: <span className="original-price text-decoration-line-through text-muted">₹{packageDetail.mrp}</span> 
-                    <span className="text-success fw-bold">₹{packageDetail.price}</span>
+                    Price: <span className="original-price para text-decoration-line-through text-muted">₹{packageDetail.mrp}</span> 
+                    <span className="text-success fw-bold para">₹{packageDetail.price}</span>
                 </p>
-                <p>{packageDetail.short_description}</p>
-                <Button>Enquire Now</Button>
+                <p className='hed3'>{packageDetail.short_description}</p>
+                <Button  className="buttonfirst scan-button-sm m-0">Enquire Now</Button>
             </Col>
-            <Col md={6} xl={8}>
-            <h2>Package Details</h2>
-                <div dangerouslySetInnerHTML={{ __html: packageDetail.description }} />
-            </Col>
+          
         </Row>
     );
 }

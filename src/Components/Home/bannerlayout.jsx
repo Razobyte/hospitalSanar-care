@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import imgnew4 from '../../../public/Image/fornew1 (5).png';
 import imgnew1 from '../../../public/Image/fornew1 (6).png';
 import imgnew2 from '../../../public/Image/fornew1 (7).png';
@@ -5,32 +6,34 @@ import imgnew3 from '../../../public/Image/fornew1 (8).png';
 import { Row,Col } from 'react-bootstrap'
 
 export default function Banner() {
+  const Navigate=useNavigate()
     return (
         <>
      <Row className="d-md-flex d-none justify-content-center align-items-center py-xl-5 py-md-5 py-lg-5 py-0">
   <Col xs={10} md={10} className="d-flex justify-content-center align-items-center text-center gap-4">
     {/* Content for first column */}
-    <div className="for-new" style={{backgroundColor:"#FFCBF1"}} >
+    <div className="for-new" style={{backgroundColor:"#FFCBF1"}} 
+    onClick={()=>Navigate('/book-scans')}>
       <img src={imgnew3} alt="" className="img-fluid"/>
       <h4 className=" text-center">Find Your scans</h4>
       <p className="para text-center">Scan with expert.</p>
     </div>
 
     {/* Content for second column */}
-    <div className=" for-new " style={{backgroundColor:"#99E6FF"}} >
+    <div className=" for-new cursor-pointer " style={{backgroundColor:"#99E6FF"}} onClick={()=>Navigate('/health-package')}>
       <img src={imgnew2} alt="" className="img-fluid"  />
       <h4 className="text-center ">Health Packages</h4>
       <p className="para text-center ">1000 problems 1 Solution.</p>
     </div>
 
     {/* Content for third column */}
-    <div className=" for-new" style={{backgroundColor:"#B3E6BE"}}>
+    <div className=" for-new" style={{backgroundColor:"#B3E6BE"}}  onClick={()=>Navigate('/doctors')}>
       <img src={imgnew1} alt="" className="img-fluid"  />
       <h4 className=" text-center ">Our Doctors</h4>
       <p className="para text-center ">Experienced radiologist  Services</p>
     </div>
     {/* Content for fourth column */}
-    <div className="  for-new"  style={{backgroundColor:"#B3BDF1"}}>
+    <div className="  for-new"  style={{backgroundColor:"#B3BDF1"}} onClick={()=>Navigate('/contact')}>
       <img src={imgnew4} alt="" className="img-fluid"  />
       <h4 className="text-center">Fill Enquiry Form</h4>
       <p className="para text-center ">Get Personalized Assistance.</p>

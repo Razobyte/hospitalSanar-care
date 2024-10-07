@@ -3,12 +3,8 @@ import { Card, Button, Accordion, Modal } from 'react-bootstrap';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 import { IoMdClose } from "react-icons/io";
 import './Doctors.css';
-import FormLayout from '../ContactUs/Form';
-import usericon from '../../../public/Image/Formicon1 (5).png';
-import emailicon from '../../../public/Image/Formicon1 (4).png';
-import phoneicon from '../../../public/Image/Formicon1 (3).png';
-import messageicon from '../../../public/Image/Formicon1 (2).png';
 import wp from '../../../public/Image/whatsapp-icon-png.png';
+import ContactForm from '../../Form';
 
 const DoctorCard = ({ doctor }) => {
   const [showForm, setShowForm] = useState(false);
@@ -39,31 +35,6 @@ const DoctorCard = ({ doctor }) => {
     setShowForm(false);
   };
 
-  const formData1 = [
-    { type: 'text', placeholder: 'Name', required: true },
-    { type: 'email', placeholder: 'Email', required: true },
-    { type: 'number', placeholder: 'Phone', required: true },
-    { type: 'textarea', placeholder: 'Message', required: true },
-  ];
-
-  const icons = {
-    'text': usericon,
-    'email': emailicon,
-    'number': phoneicon,
-    'textarea': messageicon,
-  };
-
-  const selectField1 = {
-    type: 'select',
-    placeholder: 'Subject',
-    options: [
-      { label: 'subject', value: 'disabled' },
-      { label: 'General Enquiry', value: 'general_enquiry' },
-      { label: 'Book an appointment', value: 'book_appointment' }
-    ],
-    required: true
-  };
-
   return (
     <div className="col-xl-12 col-lg-12 col-md-12 d-flex flex-column align-items-center justify-content-center">
       <Card className='doctors-card d-flex flex-row align-items-center text-left p-0'>
@@ -80,8 +51,8 @@ const DoctorCard = ({ doctor }) => {
           <div className='p-0 m-0 des2 pt-1'>
             {doctor.desigination}, {doctor.hospital}
           </div>
-          <div className='fw-bold exp pt-1'>
-            {doctor.experience}
+          <div className='fw-normal exp pt-1'>
+          <span className='fw-bold'>Experience</span> - {doctor.experience}
           </div>
           <div className='des pt-1'>
             <span className='fw-bold'>Designation</span> - {doctor.desigination}
@@ -90,9 +61,9 @@ const DoctorCard = ({ doctor }) => {
         </Card.Body>
         <div className='button-container d-lg-flex d-none flex-column align-items-center gap-1 pe-4 '>
           <div className='d-flex'>
-            <Button className='mb-2 consult-now-btn py-2 ' href={`https://wa.me/${doctor.whatsappNumber}`} target="_blank">
+            <Button className='mb-2 consult-now-btn py-2  bg-light' href="https://wa.me/7042148149" target="_blank">
               WhatsApp
-              <img src={wp} alt="WhatsApp" className=' ms-2 img-fluid' style={{ height: "20px", maxWidth: "20px" }} />
+              <img src={wp} alt="WhatsApp" className=' ms-2 img-fluid object-contain' style={{ height: "25px", maxWidth: "px" }} />
             </Button>
             
           </div>
@@ -109,11 +80,7 @@ const DoctorCard = ({ doctor }) => {
           >
             <IoMdClose size={24} color='black' />
           </Button>
-          <FormLayout
-            formData={formData1}
-            icons={icons}
-            selectField={selectField1}
-          />
+         <ContactForm data="Contact Us"/>
         </div>
       </Modal>
 

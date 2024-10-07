@@ -25,50 +25,30 @@ export default function Home() {
   
     const fetchBanners = async () => {
       try {
-        const response = await axios.post(api,
-             {
-          // Add any required data here
-          // For example: action: 'get_banners'
-        }, {
+        const response = await axios.post(api, {}, {
           headers: {
             'Content-Type': 'application/json',
-            // Add any other required headers
           },
         });
-  
-        if (response.data && response.data.msgcode === "1") {
-          setBanners(response.data.response.banners);
-          // console.log('Banners fetched successfully!');
-        } else {
-          // console.error('Unexpected response format');
-        }
-      } catch (error) {
-        // console.log('Error:', error);
-        if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
-          // console.log(`Server error: ${error.response.status}`);
-        } else if (error.request) {
-          // The request was made but no response was received
-          // console.log('No response from server. Check your internet connection.');
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          // console.log('Error setting up the request');
-        }
+          setBanners(response.data.response.banners)
+      } 
+      catch (error) {
+        console.error("Error fetching banners:", error.message);
       }
     };
+    
     return (
         <>
       <Row className="px-0">
-  
           <Carousel className="px-0">
             {banners.map((banner, index) => (
               <Carousel.Item key={index}>
-                <img
+             <a href={banner.link}>
+               <img
                   className="d-block w-100"
                   src={banner.image}
                   alt={`Banner ${index + 1}`}
-                />
+                /></a>  
                 <Carousel.Caption>
                   {/* <h3>Banner {index + 1}</h3> */}
                   {/* Add more caption details if needed */}

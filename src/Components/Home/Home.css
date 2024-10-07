@@ -1,3 +1,5 @@
+
+
 .carousel-indicators [data-bs-target]{
   background-color: #3B7FBF !important;
 }
@@ -220,10 +222,7 @@ padding: 10px;
   cursor: pointer !important;
   transition: background-color 0.3s, color 0.3s !important; /* Transition effect */
   position: absolute !important;
-
-
 }
-
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
   background-color: #4a9acf !important; /* Hover background color */
@@ -250,9 +249,20 @@ padding-top: 20px;
   color: #585454;
 }
 .health-div-iind{
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 0px;
-  height: 530px !important;
+  width: 100%;
+  height:auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+  text-align: center;
+}
+.health-div-iind,p{
+  word-wrap: break-word;
+  white-space:normal,
 }
 .health-div-iind>img{
   width: 100%;
@@ -414,6 +424,9 @@ width: 100%;
 height: 450px;
 object-fit: cover;
 }
+.banner-contact{
+  height: 400px;
+}
 @media (max-width: 768px) {
   .doctor-card-container-main-page{
     border: 1px  solid rgba(128, 128, 128, 0.295);
@@ -496,13 +509,16 @@ object-fit: cover;
     width: 100% !important;
    
   }
+  .banner-contact{
+    height: auto;
+  }
   /* Swiper Container */
   .swiper-container {
     width: 330px !important;
     position: relative;
   }
   .health-div{
-    height: 350px !important;
+    height: auto !important;
     padding: 5px !important;
   }
   .Card-Healthscan{
@@ -612,6 +628,7 @@ padding: 0px 8px;
 
   }
   .fifthsec>img{
+
     width: 40px ; 
     height: 40px ; 
   }
@@ -636,6 +653,9 @@ padding: 0px 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 0px;
     height: 430px !important;
+  }
+  .health-div-iind{
+    height: 200px !important;
   }
 }
 @media (min-width: 1400px) {

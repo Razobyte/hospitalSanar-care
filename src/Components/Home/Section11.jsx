@@ -9,6 +9,7 @@ import sec2img from '../../../public/Image/sec113.png';
 import sec3img from '../../../public/Image/sec112.png';
 import thumbimg from '../../../public/Image/thumb.png';
 import IMG1 from '../../../public/Image/test.png';
+import '../home/Home.css'
 
 export default function Section11() {
   const testimonials = [
