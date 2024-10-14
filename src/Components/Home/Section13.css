@@ -1,0 +1,86 @@
+/* Existing styles */
+.blog-slide {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .blog-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .blog-title {
+    color: #46A4D9;
+    margin: 1rem 0;
+  }
+  
+  .blog-description {
+    padding: 0 1rem;
+    text-align: center;
+    flex-grow: 1;
+  }
+  
+  /* Swiper pagination styles */
+  .swiper-pagination-bullet {
+    background-color: #5bbcf5;
+  }
+  
+  .swiper-pagination-bullet-active {
+    background-color: #46A4D9;
+  }
+  
+  /* Custom navigation button styles */
+  .position-relative {
+    position: relative;
+  }
+  
+  .custom-swiper-button-prev,
+  .custom-swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(70, 164, 217, 0.8);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-swiper-button-prev {
+    left: -30px;
+  }
+  
+  .custom-swiper-button-next {
+    right: -30px;
+  }
+  
+  .custom-swiper-button-prev:hover,
+  .custom-swiper-button-next:hover {
+    background-color: rgba(70, 164, 217, 1);
+  }
+  
+  .custom-swiper-button-prev svg,
+  .custom-swiper-button-next svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* Ensure the Swiper container has enough padding */
+  .swiper-container {
+    padding: 0 30px;
+  }

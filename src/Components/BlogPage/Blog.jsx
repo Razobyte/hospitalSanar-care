@@ -1,53 +1,73 @@
+import React, { useEffect, useState } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import blogBanner from '../../../public/Image/Blogs page banner.png';
 import Section11 from '../home/Section11';
 import Section10 from '../home/Section10';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 export default function Blog() {
-  const [blogdata, setBlogData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1); // Start at the first page
-  const recordsPerPage = 8; // Show 9 blogs per page
+  const [blogData, setBlogData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalCount, setTotalCount] = useState(0);
 
-  let api = import.meta.env.VITE_API_BASE_URL;
+  const api = import.meta.env.VITE_API_BASE_URL;
+  const navigate = useNavigate();
 
-  const fetchBlogData = async () => {
+  const fetchBlogData = async (page) => {
+    setLoading(true);
     try {
-      const response = await axios.post(api, {}, {
+      const formData = new FormData();
+      formData.append('view', 'blog');
+      formData.append('page', page);
+
+      const response = await axios.post(api, formData, {
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
         },
       });
 
-      if (response.data && response.data.response && response.data.response.blogs) {
-        setBlogData(response.data.response.blogs);
-      }
+      const { blogs, count } = response.data.response;
+      setBlogData(blogs);
+      setTotalCount(count);
     } catch (error) {
-      // Handle error
+      console.error('Error fetching blog data:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchBlogData();
-  }, []);
+    fetchBlogData(currentPage);
+  }, [currentPage]);
 
-  const navigate = useNavigate();
-  const lastIndex = currentPage * recordsPerPage;
-  const firstIndex = lastIndex - recordsPerPage;
-  const visibleRecords = blogdata.slice(firstIndex, lastIndex); // Get blogs for the current page
-  const numberOfPages = Math.ceil(blogdata.length / recordsPerPage); // Total number of pages
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
 
-  // Generate an array of page numbers
-  const pageNumbers = [];
-  for (let i = 1; i <= numberOfPages; i++) {
-    pageNumbers.push(i);
-  }
+  const renderPagination = () => {
+    const totalPages = Math.ceil(totalCount / 9); // Assuming 9 items per page
+    const pageNumbers = [];
 
-  // Handle page click
-  const handlePageClick = (pageNumber) => {
-    setCurrentPage(pageNumber);
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(
+        <Button
+          key={i}
+          onClick={() => handlePageChange(i)}
+          variant={currentPage === i ? 'primary' : 'outline-primary'}
+          className="mx-1"
+        >
+          {i}
+        </Button>
+      );
+    }
+
+    return (
+      <div className="d-flex justify-content-center my-4">
+        {pageNumbers}
+      </div>
+    );
   };
 
   return (
@@ -71,77 +91,62 @@ export default function Blog() {
       </Row>
 
       {/* Blogs Section */}
-      <div className='d-flex justify-content-center align-items-center'>
-        <h1 className='hed1 pt-3'>Our Blogs</h1>
-      </div>
-      
-      <div className='d-flex justify-content-center align-items-center flex-wrap gap-3'>
-        {visibleRecords.map((blog,index) => (
-          <div
-          key={blog.id || blog.slug || index}// Assuming `blog` has a unique `id`
-            onClick={() => navigate(`/blog/blogdetails/${blog.slug}`)}
-            style={{
-              width: '400px',
-              cursor: 'pointer',
-              height: 'auto', // Allows the height to adjust based on content
-              padding: '16px',
-              border: '1px solid #ddd',
-              borderRadius: '8px',
-              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-              display: 'flex',
-              flexDirection: 'column',
-              backgroundColor: '#fff'
-            }}
-          >
-            {blog.image && (
-              <img
-                src={blog.image} // URL of the image
-                alt={blog.title} // Alt text for accessibility
-                style={{
-                  width: '100%', // Full width of the card
-                  height: 'auto', // Maintain aspect ratio
-                  borderRadius: '8px',
-                  objectFit: 'cover', // Cover the area without distortion
-                  marginBottom: '16px' // Space between image and text
-                }}
-              />
-            )}
-            <h2 style={{ color: "#46A4D9" }} className='hed4 text-center'>{blog.title}</h2>
-            <p style={{ color: '#555' }} className='para text-center'>{blog.short_description}</p>
-          </div>
-        ))}
+      <div className="d-flex justify-content-center align-items-center">
+        <h1 className="hed1 pt-3">Our Blogs</h1>
       </div>
 
-      {/* Pagination Section */}
-      <div className='mt-4 mb-4' style={{ display: 'flex', justifyContent: 'center', gap: '1rem' }}>
-        {pageNumbers.map((pageNumber) => (
-          <Button
-            key={pageNumber}
-            onClick={() => handlePageClick(pageNumber)}
-            style={{
-              backgroundColor: currentPage === pageNumber ? '#46A4D9' : '#3b7fbf', 
-              border: "0px"
-            }}
-          >
-            {pageNumber}
-          </Button>
-        ))}
-      </div>
+      {loading ? (
+        <div className="text-center">Loading...</div>
+      ) : (
+        <div className="d-flex justify-content-center align-items-center flex-wrap gap-3">
+          {blogData.map((blog, index) => (
+            <div
+              key={blog.slug || index}
+              onClick={() => navigate(`/blog/blogdetails/${blog.slug}`)}
+              style={{
+                width: '400px',
+                cursor: 'pointer',
+                height: 'auto',
+                padding: '16px',
+                border: '1px solid #ddd',
+                borderRadius: '8px',
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                display: 'flex',
+                flexDirection: 'column',
+                backgroundColor: '#fff',
+              }}
+            >
+              {blog.image && (
+                <img
+                  src={blog.image}
+                  alt={blog.title}
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    borderRadius: '8px',
+                    objectFit: 'cover',
+                    marginBottom: '16px',
+                  }}
+                />
+              )}
+              <h2 style={{ color: '#46A4D9' }} className="hed4 text-center">
+                {blog.title}
+              </h2>
+              <p style={{ color: '#555' }} className="para text-center">
+                {blog.short_description}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Pagination */}
+      {renderPagination()}
 
       <Section11 />
       <Section10 />
-      
-      <Row className="d-xl-none d-flex justify-content-center align-items-center my-3">
-        <Col md={12} className="fotter-first">
-          <h1 className="hed3 text-center pt-3 pb-1">Popular Radiology Scan's</h1>
-          <div className="d-flex justify-content-center align-items-center gap-1">
-            <p className="para text-left with-slash">Coronary CT Angiography In Gurugram</p>
-            <p className="para text-left with-slash">X-Ray Neck Lateral View In Gurugram</p>
-            <p className="para text-left with-slash">Color Doppler - Carotids In Gurugram</p>
-            <p className="para text-left">Ultra Sound - Thyroid In Gurugram</p>
-          </div>
-        </Col>
-      </Row>
+
+      {/* ... (The rest of the component remains the same) ... */}
     </>
   );
 }

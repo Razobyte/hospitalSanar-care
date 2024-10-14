@@ -1,8 +1,4 @@
 
-
-.carousel-indicators [data-bs-target]{
-  background-color: #3B7FBF !important;
-}
 .sectionContainer {
  background-image: linear-gradient(to left,  #f7f7f7  ,transparent 80%);
  background-repeat: no-repeat;
@@ -161,24 +157,6 @@ padding: 10px;
   color: white !important;
   background-color: #4085AD !important;
 }
-.scansIndicators>a>.carousel-control-next-icon{
-  border-radius: 50px!important;
-  border: 2px solid white!important;
-  background-color:#46A4D9!important;
-  padding: 10px; 
-  position: absolute;
-  right: -45px !important;
-
-}
-.scansIndicators>a>.carousel-control-prev-icon{
-  border-radius: 50px!important;
-  border: 2px solid white!important;
-  background-color:#46A4D9!important;
-  padding: 10px; 
-  position: absolute;
-  left: -45px !important;
-
-}
 .scan-main-page-div{
   display: flex;
   justify-content: center;
@@ -208,27 +186,6 @@ padding: 10px;
      height: 270px;
   
 }
-.swiper-button-prev,
-.swiper-button-next {
-  background-color: #fffb !important; /* Background color */
-  color: #000 !important; /* Text color */
-  border: 1px solid #000 !important; /* Border */
-  border-radius: 50%; /* Make it round */
- /* Width of the navigation buttons *//* Height of the navigation buttons */
- padding: 23px !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  cursor: pointer !important;
-  transition: background-color 0.3s, color 0.3s !important; /* Transition effect */
-  position: absolute !important;
-}
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-  background-color: #4a9acf !important; /* Hover background color */
-  color: #fff !important; /* Hover text color */
-}
-
 .for-new{
   width: 265px;
   height: 265px;
@@ -384,58 +341,24 @@ width: 370px ;
 .swiper-container {
   padding: 40px 0;
 }
-.swiper-button-next{
-  position: absolute;
-  background-color: #4085AD !important;
-  color: #fff !important;
-  border: 1px solid #fff !important;
-}
-.swiper-button-prev{
-  position: absolute;
-  background-color: #4085AD !important;
-  color: #fff !important;
-  border: 1px solid #fff !important;
-}
-
 /* Doctor Card Styles */
 .doctor-card-container-main-page {
   position: relative;
-  border-radius: 10px;
+  border-radius: 10px !important;
   overflow: hidden;
-  border: 3px solid #4085AD;
+  border: 3px solid #e6eaed97 !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.041);
+
 }
-/* blog main */
-.blog-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.blog-height{
-  max-height: 350px ;
-  min-height: 350px;
-  width: 500px;
-}
-.blog-img{
- height: 180px;
- width: 100%;
-}
-.doctor-card-container-main-page  img{
-width: 100%;
-height: 450px;
-object-fit: cover;
+.recent-blog-img{
+  width:100px!important;
+  min-height: 50px !important;
+  max-height: 50px !important;
 }
 .banner-contact{
   height: 400px;
 }
 @media (max-width: 768px) {
-  .doctor-card-container-main-page{
-    border: 1px  solid rgba(128, 128, 128, 0.295);
-  }
-  .doctor-card-container-main-page  img{
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    }
   .howtobookyourtest{
     display: none !important;
   }
@@ -446,10 +369,6 @@ object-fit: cover;
     min-height: 200px; 
     width: 350px !important;
   }
-    .swiper-button-next,
-    .swiper-button-prev{
-      display: none !important;
-    }
   .scan-main-page-div>img{
     width: 50px;
     height: 50px;
@@ -528,15 +447,6 @@ object-fit: cover;
   }
   .Card-Healthscan>img{
     border-radius: 0px !important;
-  }
- 
-  .scansIndicators>a>.carousel-control-next-icon{
-   display: none !important;
-  
-  }
-  .scansIndicators>a>.carousel-control-prev-icon{
-    display: none !important;
-  
   }
   .scan-button-sm{
     display: none!important;
@@ -678,7 +588,7 @@ padding: 0px 8px;
   }
   .doctor-card-container-main-page  img{
     width: 100%;
-    height: 350px;
+    height: 400px;
     object-fit: cover;
     }
 }

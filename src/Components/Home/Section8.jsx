@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import './Home.css'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Card, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io';
+import './Section13.css'; // Make sure this file contains the CSS for custom navigation
 
 export default function Section8() {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const [datadoctors, setData] = useState([]);
-  let api = import.meta.env.VITE_API_BASE_URL
-  
+  const api = import.meta.env.VITE_API_BASE_URL;
+
+  const navigationPrevRef = useRef(null);
+  const navigationNextRef = useRef(null);
 
   const DoctorsData = async () => {
     try {
@@ -20,14 +25,9 @@ export default function Section8() {
           'Content-Type': 'application/json',
         },
       });
-
-      // console.log('Full Response:', res);
-      // console.log('Response data:', res.data);
-
-      // Set the response data to state
       setData(res.data.response.doctors || []);
     } catch (error) {
-      // console.error('Error fetching doctors data:', error);
+      console.error('Error fetching doctors data:', error);
     }
   };
 
@@ -36,48 +36,66 @@ export default function Section8() {
   }, []);
 
   return (
-    <Row className="py-lg-5 py-md-5 py-xl-5 py-1 d-flex justify-content-center align-items-center">
-      <Col lg={10} xs={12}>
-        <h1 className="hed2 text-center pt-xl-0 pt-lg-0 pt-md-0 pt-3">Meet Our Expert Team of Doctors</h1>
-        <p className="hed4 text-center pb-lg-4 pb-xl-4 pb-md-4 pb-0">Our Team of Diverse Specialists</p>
-        <Swiper 
-          loop={true}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
+    <Row className="justify-content-center">
+      <h1 className="text-center hed1 pb-sm-2 pb-3 pt-sm-0 pt-3">Meet Our Expert Team of Doctors</h1>
+      <h4 className="hed4 text-center pb-lg-4 pb-xl-4 pb-md-4 pb-0">Our Team of Diverse Specialists</h4>
+      <Col md={10} className="position-relative">
+        <Swiper
           modules={[Autoplay, Navigation]}
-          navigation
+          spaceBetween={30}
+          slidesPerView={3}
+          loop={true}
+          navigation={{
+            prevEl: navigationPrevRef.current,
+            nextEl: navigationNextRef.current,
+          }}
+          onBeforeInit={(swiper) => {
+            swiper.params.navigation.prevEl = navigationPrevRef.current;
+            swiper.params.navigation.nextEl = navigationNextRef.current;
+          }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
           breakpoints={{
             0: {
-              slidesPerView: 3,
-              spaceBetween: 5,  // Space between slides for small screens
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            480: {
+              slidesPerView: 2,
+              spaceBetween: 20,
             },
             768: {
               slidesPerView: 2,
-              spaceBetween: 0,  // Space between slides for medium screens
+              spaceBetween: 30,
             },
-            1000: {
+            1024: {
               slidesPerView: 3,
-              spaceBetween: 30,  // Space between slides for large screens
+              spaceBetween: 30,
             },
           }}
+          className="pb-4"
         >
           {datadoctors.map((doctor, index) => (
             <SwiperSlide key={index}>
-              <div className="doctor-card-wrapper d-flex justify-content-center align-items-center">
-                <div className="doctor-card-container-main-page" onClick={()=>navigate('./our-doctors')}>
-                  <img src={doctor.image || 'default-image-url'} alt={doctor.name} className='img-fluid ' />
-                  <Card className="doctor-card-main-page pb-4">
-                    <Card.Title>
-                      <h3 className="doctor-name hed3 text-center pt-3 text-black">{doctor.name}</h3>
-                    </Card.Title>
-                    <Card.Text as="div" className="doctor-specialty para text-center mt-0 p-0 text-black">
-                      {doctor.designation}
-                    </Card.Text>
-                  </Card>
-                </div>
-              </div>
+              <Card className="border-0 doctor-card-container-main-page
+               text-center" onClick={() => navigate('./our-doctors')}>
+                <img src={doctor.image} alt={doctor.name} className="doctor-image img-fluid" />
+                <Card.Body>
+                  <Card.Title className="hed4" style={{color:"#46A4D9"}}>{doctor.name}</Card.Title>
+                  <Card.Text className="para">{doctor.designation}</Card.Text>
+                </Card.Body>
+              </Card>
             </SwiperSlide>
           ))}
         </Swiper>
+        <div ref={navigationPrevRef} className="custom-swiper-button-prev">
+          <IoMdArrowDropleft />
+        </div>
+        <div ref={navigationNextRef} className="custom-swiper-button-next">
+          <IoMdArrowDropright />
+        </div>
       </Col>
     </Row>
   );

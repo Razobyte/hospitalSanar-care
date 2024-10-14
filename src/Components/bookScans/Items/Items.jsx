@@ -13,23 +13,15 @@ import mri from '../../../../public/Image/Mask group.png';
 import icons from '../../../../public/Image/doctor consultation.png';
 import Faq from './Faq';
 import OtherItems from './OtherItems';
-
-
 export default function Items() {
   const [bannerData, setBanner] = useState(null)
-
- 
   let api = import.meta.env.VITE_API_BASE_URL;
   const { category, item } = useParams();
-  
-
-
   useEffect(() => {
     if (category && item) {
       fetchBanners();
     }
   }, [category, item]);
-
   const fetchBanners = async () => {
     const formdata = new FormData()
     formdata.append('view', 'scan_detail')
@@ -55,7 +47,7 @@ export default function Items() {
       <Row className='px-0 justify-content-center align-items-center'>
         {bannerData && (
           <div key={bannerData.slug} className='w-100 px-0'> {/* Use slug or another unique identifier */}
-            <img src={bannerData.banner} alt={bannerData.name} className="d-block w-100 object-contain" /> 
+            <img src={bannerData.banner} alt={bannerData.name} className="d-block w-100 object-contain" />
           </div>
         )}
       </Row>
@@ -118,8 +110,9 @@ export default function Items() {
             <>
               <Col md={6}>
                 <h2 className='hed3'>{`What is ${bannerData.name}?`}</h2>
-                <p className='para pt-3'>
-                  {bannerData.description}
+                <p className='para pt-3'
+                dangerouslySetInnerHTML={{ __html: bannerData.description }}>
+                
                 </p>
               </Col>
               <Col md={4}>
@@ -131,15 +124,9 @@ export default function Items() {
           )}
         </Col>
       </Row>
-      <Faq/>
-      <OtherItems/>
-     
-      
-      
-
-
+      <Faq />
+      <OtherItems />
     </>
-
   )
 
 }

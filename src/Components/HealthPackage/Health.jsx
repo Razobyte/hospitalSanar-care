@@ -4,6 +4,7 @@ import SectionFirstHealth from "./SectionFirstHealth";
 import SectioniindHealth from "./SectioniindHealth";
 import Section10 from '../home/Section10';
 import Section13 from "../home/Section13";
+import FaqHealthPackegs from "./FaqHealthPackages";
 export default function Health() {
     return (
         <>
@@ -15,7 +16,7 @@ export default function Health() {
 
             <SectioniindHealth />
          
-            <Section10 />
+            <FaqHealthPackegs/>
             
             <Section13 />
             <Row className="d-flex justify-content-center align-items-center py-2">

@@ -1,7 +1,7 @@
-import { Row, Col, Form, Card } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Row, Col, Form, Card, Button, Accordion } from 'react-bootstrap';
 import { FaSearch } from 'react-icons/fa';
 import DoctorCard from './DoctorsCard';
-import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function SectionFirst() {
@@ -11,15 +11,24 @@ export default function SectionFirst() {
     const [filteredDepartments, setFilteredDepartments] = useState([]);
     const [doctorSearch, setDoctorSearch] = useState('');
     const [departmentSearch, setDepartmentSearch] = useState('');
-    const [selectedDoctor, setSelectedDoctor] = useState(null);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [visibleDoctors, setVisibleDoctors] = useState(3);
+    const [activeKey, setActiveKey] = useState('1');
     let api = import.meta.env.VITE_API_BASE_URL;
 
     const fetchData = async () => {
         try {
+            setError(null);
+            setLoading(true);
+            console.log('Fetching data from API:', api);
+
             const doctorData = new FormData();
             doctorData.append('view', 'doctor');
             doctorData.append('search', '');
             doctorData.append('department', '');
+
+            console.log('Request payload:', Object.fromEntries(doctorData));
 
             const res = await axios.post(api, doctorData, {
                 headers: {
@@ -27,17 +36,30 @@ export default function SectionFirst() {
                 },
             });
 
+            console.log('API Response:', res.data);
+
             if (res.data && res.data.message === 'success') {
                 const responseData = res.data.response;
                 if (responseData) {
+                    console.log('Doctors received:', responseData.doctors);
+                    console.log('Departments received:', responseData.departments);
                     setDoctorsData(responseData.doctors || []);
                     setFilteredDoctors(responseData.doctors || []);
                     setDepartments(responseData.departments || []);
                     setFilteredDepartments(responseData.departments || []);
+                } else {
+                    console.log('No response data found');
+                    setError('No data received from server');
                 }
+            } else {
+                console.log('API returned an unsuccessful response');
+                setError('Failed to fetch data from server');
             }
         } catch (error) {
             console.error('Error fetching doctor data:', error);
+            setError(`An error occurred while fetching data: ${error.message}`);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -46,22 +68,29 @@ export default function SectionFirst() {
     }, []);
 
     useEffect(() => {
+        console.log('Filtering doctors with search term:', doctorSearch);
         const filtered = doctorsData.filter(doctor =>
             doctor.name.toLowerCase().includes(doctorSearch.toLowerCase())
         );
+        console.log('Filtered doctors:', filtered);
         setFilteredDoctors(filtered);
-        setSelectedDoctor(filtered.length === 1 ? filtered[0] : null);
     }, [doctorSearch, doctorsData]);
 
     useEffect(() => {
+        console.log('Filtering departments with search term:', departmentSearch);
         const filtered = departments.filter(department =>
             department.name.toLowerCase().includes(departmentSearch.toLowerCase())
         );
+        console.log('Filtered departments:', filtered);
         setFilteredDepartments(filtered);
     }, [departmentSearch, departments]);
 
+    const loadMore = () => {
+        setVisibleDoctors(prevVisible => prevVisible + 1);
+    };
+
     return (
-        <Row className='py-xl-5 py-lg-5 py-md-5 py-0 d-md-flex justify-content-center align-items-start'>
+        <Row className='py-xl-5 py-lg-5 py-md-5 py-0 d-md-flex justify-content-center align-items-start gap-4'>
             {/* Sidebar Section */}
             <Col xl={3} lg={4} md={4} className="px-0 py-lg-3 py-md-3 py-xl-3 d-flex flex-column gap-4">
                 {/* By Doctors Section */}
@@ -120,7 +149,26 @@ export default function SectionFirst() {
 
             {/* Doctor Cards Section */}
             <Col xl={7} lg={7} md={7} className="d-flex flex-column align-items-start">
-                {selectedDoctor && <DoctorCard doctor={selectedDoctor} />}
+                {loading && <div>Loading...</div>}
+                {error && <div className="alert alert-danger">{error}</div>}
+                {!loading && !error && (
+                    <>
+                        {filteredDoctors.length === 0 ? (
+                            <div>No doctors found</div>
+                        ) : (
+                            <>
+                                {filteredDoctors.slice(0, visibleDoctors).map((doctor, index) => (
+                                    <Accordion key={index} activeKey={activeKey} onSelect={(k) => setActiveKey(k)}>
+                                        <DoctorCard doctor={doctor} eventKey={index.toString()} />
+                                    </Accordion>
+                                ))}
+                                {visibleDoctors < filteredDoctors.length && (
+                                    <Button onClick={loadMore} className="mt-0 buttonfirst">Load More</Button>
+                                )}
+                            </>
+                        )}
+                    </>
+                )}
             </Col>
         </Row>
     );

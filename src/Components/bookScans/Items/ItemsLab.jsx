@@ -7,7 +7,7 @@ import '../category/Category.css'
 
 export default function ItemsLab() {
   const [data, setData] = useState([]);
-  const [visibleCount, setVisibleCount] = useState(1);
+  const [visibleCount, setVisibleCount] = useState(4);
 
   const api = import.meta.env.VITE_API_BASE_URL;
 
@@ -30,7 +30,6 @@ export default function ItemsLab() {
       console.error('Error fetching data:', error);
     }
   };
-
   useEffect(() => {
     if (category && item) {
       ItemLabDetail();

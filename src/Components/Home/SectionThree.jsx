@@ -1,9 +1,10 @@
 import { Row, Col, Card, Button } from 'react-bootstrap';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules'; // Add Navigation module
 import 'swiper/css';
-import './Home.css'
-import { useState, useEffect } from 'react';
+import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io'; // Icons for navigation
+import './Home.css';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,6 +14,9 @@ export default function SectionThree() {
   const [facilitiesData, setFacilitiesData] = useState([]);
   const [categories, setCategories] = useState([]); // State to hold categories
   const navigate = useNavigate();
+
+  const navigationPrevRef = useRef(null); // Ref for previous button
+  const navigationNextRef = useRef(null); // Ref for next button
 
   useEffect(() => {
     fetchFacilities();
@@ -41,7 +45,7 @@ export default function SectionThree() {
     const formData = new FormData();
     formData.append('view', 'scan_menu');
     try {
-      const response = await axios.post(api, formData, { // Fixed the formData sending
+      const response = await axios.post(api, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -77,14 +81,20 @@ export default function SectionThree() {
     <Row className="d-md-flex d-lg-flex d-xl-flex d-none justify-content-center align-items-center py-lg-5 py-xl-5 py-md-5 py-2">
       <Col md={10} xs={12}>
         <h1 className="hed1 text-center pb-xl-3 pb-lg-3 pb-md-3 pb-2 hover">Health Scans</h1>
-        <Row className="py-lg-3 py-md-3 py-xl-3 py-1 d-flex justify-content-center align-items-center">
+        <Row className="py-lg-3 py-md-3 py-xl-3 py-1 d-flex justify-content-center align-items-center position-relative">
           <Swiper
             spaceBetween={10}
-
             slidesPerView={getSlidesPerView()}
-
             loop={facilitiesData.length > getSlidesPerView()}
-            modules={[Autoplay]}
+            modules={[Autoplay, Navigation]} // Include Navigation module
+            navigation={{
+              prevEl: navigationPrevRef.current,
+              nextEl: navigationNextRef.current,
+            }}
+            onBeforeInit={(swiper) => {
+              swiper.params.navigation.prevEl = navigationPrevRef.current;
+              swiper.params.navigation.nextEl = navigationNextRef.current;
+            }}
             autoplay={{
               delay: 3000,
               disableOnInteraction: false,
@@ -92,7 +102,7 @@ export default function SectionThree() {
             breakpoints={{
               640: { slidesPerView: 1 },
               768: { slidesPerView: 1 },
-              1024: { slidesPerView: 6 },
+              1024: { slidesPerView: 5 },
             }}
           >
             {facilitiesData.map((slide, index) => (
@@ -124,6 +134,14 @@ export default function SectionThree() {
               </SwiperSlide>
             ))}
           </Swiper>
+
+          {/* Navigation buttons */}
+          <div ref={navigationPrevRef} className="custom-swiper-button-prev">
+            <IoMdArrowDropleft />
+          </div>
+          <div ref={navigationNextRef} className="custom-swiper-button-next">
+            <IoMdArrowDropright />
+          </div>
         </Row>
       </Col>
     </Row>

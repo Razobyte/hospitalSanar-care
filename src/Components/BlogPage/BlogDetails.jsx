@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Row, Col, Form, Card } from 'react-bootstrap';
 import Section10 from '../home/Section10';
 import Section11 from '../home/Section11';
+import '../home/Home.css'
 
 export default function BlogDetail() {
     const { slug } = useParams();
@@ -74,19 +75,19 @@ export default function BlogDetail() {
 
     return (
         <>
-            <Row className='py-4 d-flex justify-content-center align-items-start gap-5'>
+            <Row className='py-sm-4 py-2 d-flex justify-content-center align-items-start gap-sm-5 gap-0'>
                 <Col md={5} xl={5} xs={12} className="px-0">
                     <Card className="border-0  rounded">
                         <Card.Img variant="top" src={blogDetail.image} alt={blogDetail.title} />
                         <Card.Body>
                             <Card.Title className="text-primary">{blogDetail.title}</Card.Title>
-                            <Card.Text>{blogDetail.short_description}</Card.Text>
-                            <div dangerouslySetInnerHTML={{ __html: blogDetail.description }} />
+                            <Card.Text className='hed4'>{blogDetail.short_description}</Card.Text>
+                            <div  className="para" dangerouslySetInnerHTML={{ __html: blogDetail.description }} />
                         </Card.Body>
                     </Card>
                 </Col>
-                <Col md={3} xl={3} className='p-3'>
-                    <div className='mb-4 shadow-sm rounded p-4 bg-white'>
+                <Col md={3} xl={3} className='p-sm-3'>
+                    <div className='mb-sm-4  mb-2 shadow-sm rounded p-sm-4 p-2 bg-white'>
                         <Form>
                             <Form.Group controlId="categorySearch">
                                 <Form.Label className="text-muted hed3">Categories</Form.Label>
@@ -108,24 +109,24 @@ export default function BlogDetail() {
                     <div className='shadow-sm rounded p-4 bg-white'>
                         <Form>
                             <Form.Group controlId="recentPostSearch">
-                                <Form.Label className="text-muted hed3">Recent Posts</Form.Label>
+                                <Form.Label className="text-muted hed3">Recent Blogs</Form.Label>
                                 <Form.Control 
                                     type="text" 
                                     placeholder="Search recent posts..." 
                                     value={recentPostSearch} 
                                     onChange={handleRecentPostSearchChange} 
-                                    className="rounded-pill"
+                                    className="rounded-pill mb-2"
                                 />
                             </Form.Group>
                         </Form>
                         {filteredRecentPosts.map((post, index) => (
                             <div key={index} className='recent-post d-flex gap-3 mb-3 align-items-center'>
-                                <div className='w-50'>
+                                <div>
                                     {post.image && (
                                         <img 
                                             src={post.image} 
                                             alt={post.title} 
-                                            className="img-fluid" 
+                                            className=" recent-blog-img" 
                                         />
                                     )}
                                 </div>

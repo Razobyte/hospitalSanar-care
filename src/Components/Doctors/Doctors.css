@@ -51,8 +51,6 @@ color: #FF631A;
   color: #303030cc;
   font-weight:500;
 }
-
-
 .doctors-card {
   background: linear-gradient(to left, #a6deff, #C1E4F9) !important;
   border: 0px !important;
@@ -66,7 +64,9 @@ color: #FF631A;
   position: relative;
   padding: 0px ;
   border-radius: 0px !important;
+  width: 100% !important;
 }
+
 .accordion-item{
   background-color: rgba(134, 134, 134, 0.062) !important;
   border: 0px !important; 
@@ -91,7 +91,8 @@ color: #FF631A;
 }
 .card-image-container{
   width: 200px !important;
-  height: 200px !important
+  min-height: 250px !important;
+  max-height: 250px !important;
 }
 .custom-modal-content {
   background-color: white;

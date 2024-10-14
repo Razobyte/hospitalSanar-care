@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Row, Col, Button } from 'react-bootstrap';
+import Section13 from '../../home/Section13';
+import Section10 from '../../home/Section10';
+import FaqHealthPackegs from '../FaqHealthPackages';
 
 export default function HealthPackageDetail() {
     const { slug } = useParams();
@@ -53,12 +56,13 @@ export default function HealthPackageDetail() {
     }
 
     return (
+        <>
         <Row className='d-flex justify-content-center mt-5'>
             <Col md={5} className="dynamic-page">
                 <div className="image-container">
                     <img src={packageDetail.image} alt={packageDetail.title} className="img-fluid" />
                 </div>
-               <div className='mt-3 text-center'>
+               <div className='mt-3 text-left'>
                <h2 className='hed2'>Package Details</h2>
                <div dangerouslySetInnerHTML={{ __html: packageDetail.description }}  className='para'/>
                </div>
@@ -74,6 +78,9 @@ export default function HealthPackageDetail() {
             </Col>
           
         </Row>
+        <Section13/>
+    <FaqHealthPackegs/>
+        </>
     );
 }
 
