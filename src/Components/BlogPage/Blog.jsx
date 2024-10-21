@@ -91,55 +91,47 @@ export default function Blog() {
       </Row>
 
       {/* Blogs Section */}
-      <div className="d-flex justify-content-center align-items-center">
-        <h1 className="hed1 pt-3">Our Blogs</h1>
-      </div>
-
-      {loading ? (
-        <div className="text-center">Loading...</div>
-      ) : (
-        <div className="d-flex justify-content-center align-items-center flex-wrap gap-3">
-          {blogData.map((blog, index) => (
-            <div
-              key={blog.slug || index}
-              onClick={() => navigate(`/blog/blogdetails/${blog.slug}`)}
+      <div className="container">
+  <Row className="justify-content-center align-items-center text-center">
+  <h1 className="hed1 pt-3 pb-4">Our Blogs</h1>
+    {blogData.map((blog, index) => (
+      <Col key={blog.slug || index} xs={12} md={6} lg={4} className="mb-4">
+        <div
+          onClick={() => navigate(`/blog/blogdetails/${blog.slug}`)}
+          style={{
+            cursor: 'pointer',
+            height: 'auto',
+            padding: '16px',
+            border: '1px solid #ddd',
+            borderRadius: '8px',
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+            backgroundColor: '#fff',
+          }}
+        >
+          {blog.image && (
+            <img
+              src={blog.image}
+              alt={blog.title}
               style={{
-                width: '400px',
-                cursor: 'pointer',
+                width: '100%',
                 height: 'auto',
-                padding: '16px',
-                border: '1px solid #ddd',
                 borderRadius: '8px',
-                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-                display: 'flex',
-                flexDirection: 'column',
-                backgroundColor: '#fff',
+                objectFit: 'cover',
+                marginBottom: '16px',
               }}
-            >
-              {blog.image && (
-                <img
-                  src={blog.image}
-                  alt={blog.title}
-                  style={{
-                    width: '100%',
-                    height: 'auto',
-                    borderRadius: '8px',
-                    objectFit: 'cover',
-                    marginBottom: '16px',
-                  }}
-                />
-              )}
-              <h2 style={{ color: '#46A4D9' }} className="hed4 text-center">
-                {blog.title}
-              </h2>
-              <p style={{ color: '#555' }} className="para text-center">
-                {blog.short_description}
-              </p>
-            </div>
-          ))}
+            />
+          )}
+          <h2 style={{ color: '#46A4D9' }} className="hed4 text-center">
+            {blog.title}
+          </h2>
+          <p style={{ color: '#555' }} className="para text-center">
+            {blog.short_description}
+          </p>
         </div>
-      )}
-
+      </Col>
+    ))}
+  </Row>
+</div>
       {/* Pagination */}
       {renderPagination()}
 

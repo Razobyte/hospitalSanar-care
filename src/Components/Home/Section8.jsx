@@ -39,7 +39,7 @@ export default function Section8() {
     <Row className="justify-content-center">
       <h1 className="text-center hed1 pb-sm-2 pb-3 pt-sm-0 pt-3">Meet Our Expert Team of Doctors</h1>
       <h4 className="hed4 text-center pb-lg-4 pb-xl-4 pb-md-4 pb-0">Our Team of Diverse Specialists</h4>
-      <Col md={10} className="position-relative">
+      <Col md={10} xs={10} className="position-relative">
         <Swiper
           modules={[Autoplay, Navigation]}
           spaceBetween={30}
@@ -64,16 +64,22 @@ export default function Section8() {
             },
             480: {
               slidesPerView: 2,
-              spaceBetween: 20,
+              spaceBetween: 10,
             },
             768: {
               slidesPerView: 2,
-              spaceBetween: 30,
+              spaceBetween: 20,
             },
             1024: {
               slidesPerView: 3,
-              spaceBetween: 30,
+              spaceBetween: 20,
             },
+            1400:{
+              slidesPerView: 3,
+              spaceBetween: 20,
+
+            }
+
           }}
           className="pb-4"
         >

@@ -67,29 +67,22 @@ export default function Items() {
         <h1 className='hed1 text-center pb-3'>Why Choose Sanarcare</h1>
         <Col md={10} className=" d-flex  flex-column justify-content-center align-items-center">
           <div>
-            <p className='para text-center'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, ratione! Asperiores repellat vitae accusantium cum voluptate? Ullam alias maxime at illo ratione. Laborum quasi commodi dicta, voluptas sint ipsum in necessitatibus quas nihil repudiandae eius reprehenderit hic optio. Ad neque recusandae quaerat ut! Vero deleniti numquam porro possimus laudantium qui? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas alias quos deserunt totam libero magnam laborum autem facere sint dicta. Voluptatum dolore facilis odio nostrum recusandae at dolorum, nam cupiditate earum nihil architecto iusto aperiam officia facere exercitationem mollitia, consequuntur repellendus maxime, tenetur vero sit laborum consectetur esse quibusdam. Velit.</p>
+          <p className='para text-left pb-0 mb-0'>Sanar Care is a premier provider in radiology, boasting a network of advanced imaging centers across major cities in India. Our facilities are equipped with the latest technology and innovative solutions to ensure precise imaging services.</p>
+          <p className='para text-left pt-0 mt-0'>Our team of highly qualified radiologists and technicians is dedicated to maintaining the highest quality standards, ensuring accurate and timely results for every radiological test. Your health is our priority, and we are committed to delivering reliable and efficient radiology services tailored to your needs.</p>
           </div>
           <div className='col-md-10 d-flex justify-content-center align-items-center gap-5 pt-3 pb-4'>
             <div className='scan-div1st '>
               <img src={Nablimg} alt="" className='img-fluid' />
-              <h4 className='para'>ISO and NABH <br />
-                certified scan centers</h4>
+              <h4 className='para'>ISO and NABH certified scan centers</h4>
             </div>
             <div className='scan-div1st'>
               <img src={reliable} alt="" className='img-fluid' />
-              <h4 className='para'>100% reliable and  <br />
-                accurate reports</h4>
+              <h4 className='para'>100% reliable and accurate reports</h4>
             </div>
-            <div className='scan-div1st'>
-              <img src={patients} alt="" className='img-fluid' />
-              <h4 className='para'>Patients save an a <br />
-                verage of ₹700 <br />
-                on each scan</h4>
-            </div>
+          
             <div className='scan-div1st'>
               <img src={mri} alt="" className='img-fluid' />
-              <h4 className='para'>1.5 lakh+ patients <br />
-                test with us every  <br />
+              <h4 className='para'> 50k+ patients test with us every month
                 month</h4>
             </div>
           </div>

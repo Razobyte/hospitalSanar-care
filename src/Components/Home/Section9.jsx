@@ -37,15 +37,15 @@ export default function HealthPackages() {
 
   return (
     <Row className='justify-content-center py-5'>
-      <Col md={10} className="text-center">
+      <Col md={10} xs={10} sm={10} xxl={10} className="text-center">
         <h1 className="mb-4 hed2" style={{ color: "#46A4D9" }}>Our Health Packages</h1>
       </Col>
       
-      <Col md={10} className="d-flex justify-content-center position-relative">
+      <Col md={10}  xs={10} sm={10} xxl={10} className="d-flex justify-content-center position-relative">
         <Swiper
           modules={[Autoplay, Navigation]}
           spaceBetween={30}
-          slidesPerView={4}
+          slidesPerView={1}
           navigation={{
             prevEl: navigationPrevRef.current,
             nextEl: navigationNextRef.current,
@@ -61,20 +61,24 @@ export default function HealthPackages() {
           }}
           breakpoints={{
             480: {
-              slidesPerView: 2,
-              spaceBetween: 20,
+              slidesPerView: 1,
+              spaceBetween: 5,
             },
             640: {
               slidesPerView: 2,
-              spaceBetween: 20,
+              spaceBetween: 10,
             },
             768: {
               slidesPerView: 3,
-              spaceBetween: 30,
+              spaceBetween: 10,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 20,
             },
             1024: {
               slidesPerView: 4,
-              spaceBetween: 30,
+              spaceBetween: 20,
             },
           }}
           style={{ width: '100%', padding: '0 40px' }}

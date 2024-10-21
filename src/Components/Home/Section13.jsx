@@ -49,11 +49,11 @@ export default function Section13() {
   return (
     <Row className="justify-content-center">
       <h1 className="text-center hed1 pb-sm-5 pb-3 pt-sm-0 pt-3">Our Blogs</h1>
-      <Col md={10} className="position-relative">
+      <Col md={10}  xs={10} lg={10} xxl={10} className="position-relative">
         <Swiper
           modules={[Autoplay, Navigation]}
           spaceBetween={30}
-          slidesPerView={4}
+          slidesPerView={1}
           loop={true}
           navigation={{
             prevEl: navigationPrevRef.current,
@@ -81,9 +81,14 @@ export default function Section13() {
               spaceBetween: 30,
             },
             1024: {
-              slidesPerView: 4,
+              slidesPerView: 3,
               spaceBetween: 30,
             },
+            1400:{
+              slidesPerView: 4,
+              spaceBetween: 30,
+
+            }
           }}
           className="pb-4"
         >

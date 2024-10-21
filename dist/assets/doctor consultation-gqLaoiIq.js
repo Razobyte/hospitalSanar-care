@@ -1,0 +1,1 @@
+const s="/assets/Mask%20group%20(1)-B5dC0iTq.png",a="/assets/Mask%20group%20(3)-COZGBBfQ.png",o="/assets/Mask%20group-k6nPiqyO.png",n="/assets/doctor%20consultation-DVga0uMa.png";export{s as N,n as i,o as m,a as r};

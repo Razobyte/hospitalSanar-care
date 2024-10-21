@@ -1,8 +1,8 @@
 import { Row, Col, Card, Button } from 'react-bootstrap';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation } from 'swiper/modules'; // Add Navigation module
+import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
-import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io'; // Icons for navigation
+import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io';
 import './Home.css';
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
@@ -12,18 +12,17 @@ let api = import.meta.env.VITE_API_BASE_URL;
 
 export default function SectionThree() {
   const [facilitiesData, setFacilitiesData] = useState([]);
-  const [categories, setCategories] = useState([]); // State to hold categories
+  const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
 
-  const navigationPrevRef = useRef(null); // Ref for previous button
-  const navigationNextRef = useRef(null); // Ref for next button
+  const navigationPrevRef = useRef(null);
+  const navigationNextRef = useRef(null);
 
   useEffect(() => {
     fetchFacilities();
-    fetchCategories(); // Fetch categories as well
+    fetchCategories();
   }, []);
 
-  // Fetch facilities (items)
   const fetchFacilities = async () => {
     try {
       const formData = new FormData();
@@ -40,7 +39,6 @@ export default function SectionThree() {
     }
   };
 
-  // Fetch categories
   const fetchCategories = async () => {
     const formData = new FormData();
     formData.append('view', 'scan_menu');
@@ -50,31 +48,38 @@ export default function SectionThree() {
           'Content-Type': 'multipart/form-data',
         },
       });
-      setCategories(response.data.response.categories); // Assuming your categories are in a similar structure
+      setCategories(response.data.response.categories);
     } catch (error) {
       console.error('Error fetching categories:', error);
     }
   };
 
-  const getSlidesPerView = () => {
-    const numItems = facilitiesData.length;
-    if (numItems <= 2) return numItems; // Show all items if there are 2 or fewer
-    return window.innerWidth < 768 ? 2 : 4; // Otherwise, use your existing logic
-  };
-
-  // Get the category slug for a given item
   const getCategorySlug = (categorySlug) => {
     if (!categories || !Array.isArray(categories)) {
       console.error('Categories is not defined or not an array:', categories);
-      return ''; // Return an empty string if categories is not defined
+      return '';
     }
     const category = categories.find(cat => cat.items.some(category => category.slug === categorySlug));
-    return category ? category.slug : ''; // Return the category slug or an empty string
+    return category ? category.slug : '';
   };
 
   const handleItemClick = (itemSlug) => {
-    const categorySlug = getCategorySlug(itemSlug); // Get the category slug
+    const categorySlug = getCategorySlug(itemSlug);
     navigate(`/book-scans/${categorySlug}/${itemSlug}/gurugram`);
+  };
+
+  // Calculate whether to enable loop based on screen width and number of slides
+  const shouldEnableLoop = () => {
+    const screenWidth = window.innerWidth;
+    const slideCount = facilitiesData.length;
+
+    if (screenWidth >= 1400 && slideCount > 4) return true;
+    if (screenWidth >= 1024 && slideCount > 3) return true;
+    if (screenWidth >= 768 && slideCount > 3) return true;
+    if (screenWidth >= 480 && slideCount > 2) return true;
+    if (screenWidth >= 320 && slideCount > 1) return true;
+    
+    return false;
   };
 
   return (
@@ -83,10 +88,9 @@ export default function SectionThree() {
         <h1 className="hed1 text-center pb-xl-3 pb-lg-3 pb-md-3 pb-2 hover">Health Scans</h1>
         <Row className="py-lg-3 py-md-3 py-xl-3 py-1 d-flex justify-content-center align-items-center position-relative">
           <Swiper
-            spaceBetween={10}
-            slidesPerView={getSlidesPerView()}
-            loop={facilitiesData.length > getSlidesPerView()}
-            modules={[Autoplay, Navigation]} // Include Navigation module
+            spaceBetween={5}
+            loop={shouldEnableLoop()}
+            modules={[Autoplay, Navigation]}
             navigation={{
               prevEl: navigationPrevRef.current,
               nextEl: navigationNextRef.current,
@@ -98,11 +102,29 @@ export default function SectionThree() {
             autoplay={{
               delay: 3000,
               disableOnInteraction: false,
+              pauseOnMouseEnter: true
             }}
             breakpoints={{
-              640: { slidesPerView: 1 },
-              768: { slidesPerView: 1 },
-              1024: { slidesPerView: 5 },
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 2
+              },
+              480: {
+                slidesPerView: 2,
+                spaceBetween: 5
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 10
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 15
+              },
+              1400: {
+                slidesPerView: 4,
+                spaceBetween: 20
+              }
             }}
           >
             {facilitiesData.map((slide, index) => (
@@ -123,9 +145,9 @@ export default function SectionThree() {
                       <div className="text-center mt-4 mb-0 d-flex justify-content-center align-items-center">
                         <Button
                           className="buttonfirst scan-button-sm m-0"
-                          onClick={() => handleItemClick(slide.slug)} // Pass only item slug
+                          onClick={() => handleItemClick(slide.slug)}
                         >
-                          {slide.buttonText || "Learn More"}
+                          {slide.buttonText || "Book Scan"}
                         </Button>
                       </div>
                     </Card.Body>
@@ -135,7 +157,6 @@ export default function SectionThree() {
             ))}
           </Swiper>
 
-          {/* Navigation buttons */}
           <div ref={navigationPrevRef} className="custom-swiper-button-prev">
             <IoMdArrowDropleft />
           </div>

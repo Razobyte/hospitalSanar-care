@@ -74,9 +74,12 @@ export default function Section11() {
               768: {
                 slidesPerView: 1,
               },
-              1000: {
+              1024: {
                 slidesPerView: 3,
               },
+              1400:{
+                slidesPerView:3,
+              }
             }}
           >
             {testimonials.map((testimonial) => (
